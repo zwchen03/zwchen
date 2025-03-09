@@ -311,14 +311,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // 初始化函数
+    // 背景音乐控制
+    const musicControl = () => {
+        const musicBtn = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        // 检查用户之前的音乐状态（使用本地存储）
+        const savedMusicState = localStorage.getItem('bgMusicPlaying');
+        if (savedMusicState === 'true') {
+            isPlaying = true;
+            musicBtn.classList.add('playing');
+            // 尝试播放音乐（需要用户交互才能自动播放）
+            const playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // 自动播放被阻止，需要用户交互
+                    isPlaying = false;
+                    musicBtn.classList.remove('playing');
+                });
+            }
+        }
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+                isPlaying = false;
+                localStorage.setItem('bgMusicPlaying', 'false');
+            } else {
+                bgMusic.play();
+                musicBtn.classList.add('playing');
+                isPlaying = true;
+                localStorage.setItem('bgMusicPlaying', 'true');
+            }
+        });
+    };
+
+    // 初始化所有功能
     const init = () => {
-        observeElements();
-        lazyLoadImages();
         parallaxEffect();
         dynamicGlassEffect();
+        observeElements();
+        lazyLoadImages();
         addCursorEffect();
         addHaloEffect();
+        musicControl(); // 添加背景音乐控制
         
         // 添加CSS
         const style = document.createElement('style');
@@ -382,6 +420,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(style);
     };
 
-    // 调用初始化函数
     init();
 }); 

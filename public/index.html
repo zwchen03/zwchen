@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CZW'home</title>
     <link rel="stylesheet" href="style.css">
+    <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 引入Noto Sans SC字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="./img/avatar.jpg" type="image/x-icon">
     <meta name="description" content="一名热爱生活，追求技术的开发者的个人空间">
     <meta name="keywords" content="个人网站, 博客, 开发者, 前端, 陈志伟">
 </head>
 <body>
+    <div class="music-control">
+        <audio id="bgMusic" loop>
+            <source src="./bgm/Pianoboy高至豪 The truth that you leave.flac" type="audio/flac">
+            您的浏览器不支持音频元素。
+        </audio>
+        <button id="musicToggle" class="music-btn">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+    
     <div class="container">
         <header>
             <div class="logo">
@@ -29,10 +41,9 @@
                     </div>
                 </ul>
             </nav>
-
         </header>
 
-        <div class="hero">
+        <div class="hero">  
             <div class="hero-content">
                 <h2 class="fade-in">Welcome!</h2>
                 <p class="fade-in delay-1">May everything you work for have a romantic outcome in the future.</p>
@@ -89,9 +100,9 @@
                     </div>
                     <div class="social-links">
                         <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" title="微博"><i class="fab fa-weibo"></i></a>
+                        <a href="#" class="social-link" title="知乎"><i class="fab fa-zhihu"></i></a>
+                        <a href="#" class="social-link" title="CSDN"><i class="fas fa-code"></i></a>
                     </div>
                 </div>
             </div>
