@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="一名热爱生活，追求技术的开发者的个人空间">
+    <meta name="keywords" content="个人网站, 博客, 开发者, 前端, 陈志伟">
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <h1 class="site-title">MyWebsite</h1>
-                <p class="site-description">Just for fun</p>
+                <h1 class="site-title">CZW's home</h1>
+                <p class="site-description">宇宙山河浪漫，人间点滴温暖，都值得我们前进</p>
             </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#" class="active">首页</a></li>
-                    <li><a href="#">文章</a></li>
-                    <li><a href="#">相册</a></li>
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">友链</a></li>
-                    <li><a href="#">留言</a></li>
+                    <li><a href="#blog">文章</a></li>
+                    <li><a href="#gallery">相册</a></li>
+                    <li><a href="#about">关于</a></li>
                 </ul>
             </nav>
             <div class="search-icon">
@@ -35,12 +35,12 @@
                 <h2 class="fade-in">欢迎来到我的个人空间</h2>
                 <p class="fade-in delay-1">一名热爱生活，追求技术的开发者</p>
                 <div class="hero-buttons fade-in delay-2">
-                    <a href="#about" class="btn primary-btn">了解更多</a>
-                    <a href="#blog" class="btn secondary-btn">阅读博客</a>
+                    <a href="#about" class="btn primary-btn"><i class="fas fa-user-alt"></i> 了解更多</a>
+                    <a href="#blog" class="btn secondary-btn"><i class="fas fa-book"></i> 阅读博客</a>
                 </div>
             </div>
             <div class="hero-image fade-in">
-                <img src="https://picsum.photos/800/600" alt="Hero Image">
+                <img src="./img/pic1.png" alt="Hero Image">
             </div>
         </div>
 
@@ -52,12 +52,13 @@
             <div class="about-content">
                 <div class="about-image">
                     <div class="image-wrapper">
-                        <img src="https://picsum.photos/400/400" alt="Profile Image">
+                        <img src="./img/avatar.jpg" alt="Profile Image">
                     </div>
                 </div>
                 <div class="about-text">
                     <h3>你好，我是<span class="highlight">陈志伟</span></h3>
                     <p>广东工业大学2021级计算机科学与技术在读</p>
+                    <p>热爱计算机科学与前端开发，人工智能，对新技术充满好奇心。</p>
                     <div class="skills">
                         <div class="skill-item" data-skill="90">
                             <span class="skill-name">HTML/CSS</span>
@@ -85,10 +86,10 @@
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -96,19 +97,19 @@
 
         <section id="stats" class="stats-section">
             <div class="stat-item">
-                <div class="stat-number" data-count="365">0</div>
-                <div class="stat-label">成立天数</div>
+                <div class="stat-number" data-count="1">0</div>
+                <div class="stat-label">天数</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-count="21">0</div>
+                <div class="stat-number" data-count="0">0</div>
                 <div class="stat-label">文章数量</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-count="412">0</div>
+                <div class="stat-number" data-count="0">0</div>
                 <div class="stat-label">评论数量</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-count="25">0</div>
+                <div class="stat-number" data-count="0">0</div>
                 <div class="stat-label">标签数量</div>
             </div>
         </section>
@@ -177,7 +178,7 @@
                 </article>
             </div>
             <div class="more-posts">
-                <a href="#" class="more-btn">查看更多文章</a>
+                <a href="#" class="more-btn">查看更多文章 <i class="fas fa-chevron-right"></i></a>
             </div>
         </section>
 
@@ -185,6 +186,7 @@
             <div class="section-header">
                 <h2 class="section-title">相册</h2>
                 <div class="section-divider"></div>
+                <p class="section-desc">记录生活中的美好瞬间</p>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
@@ -201,7 +203,7 @@
                     <div class="gallery-overlay">
                         <div class="gallery-info">
                             <h3>旅行日记</h3>
-                            <p>北京之行</p>
+                            <p>暂无</p>
                         </div>
                     </div>
                 </div>
@@ -267,51 +269,13 @@
                 <a href="#" class="tag-item" style="font-size: 1.5em;">音乐</a>
             </div>
         </section>
-
-        <section id="contact" class="contact-section">
-            <div class="section-header">
-                <h2 class="section-title">联系我</h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>example@email.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>北京市海淀区</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+86 123 4567 8910</p>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="您的姓名" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="您的邮箱" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="主题">
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="您的留言" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">发送留言</button>
-                </form>
-            </div>
-        </section>
     </div>
 
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <h2>MyWebsite</h2>
-                <p>Just for fun</p>
+                <h2>forever</h2>
+                <p>爱自己是终身浪漫的开始</p>
             </div>
             <div class="footer-links">
                 <div class="footer-column">
@@ -335,18 +299,15 @@
                 <div class="footer-column">
                     <h3>关注我</h3>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                        <a href="#"><i class="fab fa-qq"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="微信"><i class="fab fa-weixin"></i></a>
+                        <a href="#" title="QQ"><i class="fab fa-qq"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="currentYear">2024</span> MyWebsite. All Rights Reserved.</p>
-            <p>Designed with <i class="fas fa-heart"></i> by Me</p>
-        </div>
+
     </footer>
 
     <div class="back-to-top">

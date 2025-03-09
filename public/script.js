@@ -2,6 +2,57 @@ document.addEventListener('DOMContentLoaded', function() {
     // 更新页脚年份
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+    // 添加视差效果
+    const parallaxEffect = () => {
+        const heroSection = document.querySelector('.hero');
+        const aboutSection = document.querySelector('.about-section');
+        const heroContent = document.querySelector('.hero-content');
+        
+        window.addEventListener('scroll', () => {
+            const scrollValue = window.scrollY;
+            
+            // 给背景图添加视差效果
+            document.body.style.backgroundPosition = `center ${scrollValue * 0.05}px`;
+            
+            // 给英雄区域内容添加视差效果
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrollValue * 0.1}px)`;
+            }
+            
+            // 微妙的卡片旋转效果
+            if (aboutSection) {
+                aboutSection.style.transform = `perspective(1000px) rotateX(${scrollValue * 0.001}deg)`;
+            }
+        });
+    };
+
+    // 动态玻璃板背景模糊效果
+    const dynamicGlassEffect = () => {
+        const glassElements = document.querySelectorAll('.about-section, .stats-section, .blog-card, .tags-section, .contact-section, header');
+        
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            glassElements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                // 计算鼠标与元素中心的距离
+                const distanceX = mouseX - centerX;
+                const distanceY = mouseY - centerY;
+                
+                // 根据距离调整模糊程度和透明度
+                if (Math.abs(distanceX) < 300 && Math.abs(distanceY) < 300) {
+                    const blurValue = 10 - (Math.abs(distanceX) + Math.abs(distanceY)) / 60;
+                    element.style.backdropFilter = `blur(${Math.max(5, blurValue)}px)`;
+                    element.style.backgroundColor = `rgba(255, 255, 255, ${0.7 + (Math.abs(distanceX) + Math.abs(distanceY)) / 3000})`;
+                }
+            });
+        });
+    };
+
     // 技能进度条动画
     const skillItems = document.querySelectorAll('.skill-item');
     
@@ -63,11 +114,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (id === 'stats') {
                         animateStats();
                     }
+                    
+                    // 给进入视图的部分添加动画效果
+                    entry.target.style.opacity = 0;
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 300);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.2 });
 
         sections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
             observer.observe(section);
         });
     };
@@ -117,6 +178,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (src) {
                         img.src = src;
                         img.removeAttribute('data-src');
+                        
+                        // 添加淡入效果
+                        img.style.opacity = 0;
+                        setTimeout(() => {
+                            img.style.transition = 'opacity 0.5s ease';
+                            img.style.opacity = 1;
+                        }, 100);
                     }
                     observer.unobserve(img);
                 }
@@ -132,28 +200,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const blogCards = document.querySelectorAll('.blog-card');
     blogCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
         });
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = 'var(--glass-shadow)';
         });
     });
 
     // 标签云随机颜色
     const tagItems = document.querySelectorAll('.tag-item');
-    const colors = ['#4e7cff', '#6346e4', '#f59e0b', '#10b981', '#ec4899', '#8b5cf6'];
+    const colors = ['#6c63ff', '#45b6fe', '#10b981', '#ec4899', '#8b5cf6', '#f97316'];
     
     tagItems.forEach(tag => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         tag.addEventListener('mouseenter', function() {
             this.style.backgroundColor = randomColor;
             this.style.color = 'white';
+            this.style.boxShadow = `0 5px 15px ${randomColor}50`;
+            this.style.transform = 'translateY(-3px) scale(1.05)';
         });
         tag.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = '#f0f0f0';
+            this.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
             this.style.color = 'var(--text-color)';
+            this.style.boxShadow = 'none';
+            this.style.transform = 'translateY(0) scale(1)';
         });
     });
+
+    // 添加鼠标跟随效果
+    const addCursorEffect = () => {
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor-effect';
+        document.body.appendChild(cursor);
+        
+        const cursorInner = document.createElement('div');
+        cursorInner.className = 'cursor-inner';
+        document.body.appendChild(cursorInner);
+        
+        document.addEventListener('mousemove', e => {
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            setTimeout(() => {
+                cursorInner.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            }, 100);
+        });
+        
+        // 鼠标悬停在链接和按钮上时的效果
+        const links = document.querySelectorAll('a, button, .social-link, .tag-item, .gallery-item');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.classList.add('cursor-hover');
+                cursorInner.classList.add('cursor-inner-hover');
+            });
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('cursor-hover');
+                cursorInner.classList.remove('cursor-inner-hover');
+            });
+        });
+    };
 
     // 打字机效果
     const typeWriter = (element, text, speed) => {
@@ -179,22 +284,104 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('loaded');
     }, 500);
 
+    // 光晕效果
+    const addHaloEffect = () => {
+        const sections = document.querySelectorAll('.about-section, .stats-section, .blog-section, .tags-section, .contact-section');
+        
+        sections.forEach(section => {
+            const halo = document.createElement('div');
+            halo.className = 'halo-effect';
+            section.prepend(halo);
+            
+            section.addEventListener('mouseenter', () => {
+                halo.style.opacity = 0.15;
+            });
+            
+            section.addEventListener('mousemove', (e) => {
+                const rect = section.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                halo.style.background = `radial-gradient(circle at ${x}px ${y}px, var(--primary-color), transparent 50%)`;
+            });
+            
+            section.addEventListener('mouseleave', () => {
+                halo.style.opacity = 0;
+            });
+        });
+    };
+
     // 初始化函数
     const init = () => {
         observeElements();
         lazyLoadImages();
+        parallaxEffect();
+        dynamicGlassEffect();
+        addCursorEffect();
+        addHaloEffect();
+        
+        // 添加CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .cursor-effect {
+                position: fixed;
+                width: 30px;
+                height: 30px;
+                border: 2px solid var(--primary-color);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 9999;
+                transition: width 0.3s, height 0.3s, border-color 0.3s;
+                opacity: 0.5;
+            }
+            
+            .cursor-inner {
+                position: fixed;
+                width: 10px;
+                height: 10px;
+                background-color: var(--primary-color);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 9999;
+                transition: width 0.3s, height 0.3s, background-color 0.3s;
+            }
+            
+            .cursor-hover {
+                width: 50px;
+                height: 50px;
+                border-color: var(--secondary-color);
+                background-color: rgba(69, 182, 254, 0.1);
+            }
+            
+            .cursor-inner-hover {
+                width: 5px;
+                height: 5px;
+                background-color: var(--secondary-color);
+            }
+            
+            .halo-effect {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 0.5s;
+                pointer-events: none;
+                z-index: 0;
+            }
+            
+            @media (max-width: 768px) {
+                .cursor-effect, .cursor-inner {
+                    display: none;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     };
 
     // 调用初始化函数
     init();
-
-    // 表单提交
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('留言已发送！谢谢您的反馈。');
-            this.reset();
-        });
-    }
 }); 
