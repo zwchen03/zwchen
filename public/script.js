@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 更新页脚年份
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
     // 添加视差效果
     const parallaxEffect = () => {
         const heroSection = document.querySelector('.hero');
@@ -63,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
             skillBar.style.width = skillLevel + '%';
         });
     };
+
+    // 初始化技能进度条（添加此行确保页面加载时就执行动画）
+    animateSkills();
 
     // 数字统计动画
     const statItems = document.querySelectorAll('.stat-number');

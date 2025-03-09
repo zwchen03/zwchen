@@ -435,6 +435,7 @@ section {
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     width: 0;
     transition: width 1.5s ease-out;
+    display: block;
 }
 
 .social-links {
@@ -877,35 +878,6 @@ footer {
     transform: translateY(-3px);
 }
 
-.footer-bottom {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0.5);
-    position: relative;
-    z-index: 1;
-    max-width: 1000px;
-    width: 90%;
-    padding: 20px 40px;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-    box-shadow: var(--glass-shadow);
-    border: var(--glass-border);
-    border-top: none;
-}
-
-.footer-bottom p {
-    color: var(--text-color);
-    font-size: 0.9rem;
-}
-
-.footer-bottom i {
-    color: #ff6b6b;
-}
-
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -1048,11 +1020,6 @@ footer {
     .footer-column {
         min-width: 100%;
         margin-bottom: 20px;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
     }
     
     .hero-content {
