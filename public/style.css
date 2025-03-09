@@ -1174,6 +1174,7 @@ footer {
     color: var(--secondary-color);
 }
 
+/* 音乐按钮光晕效果 */
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 rgba(69, 182, 254, 0.4);
