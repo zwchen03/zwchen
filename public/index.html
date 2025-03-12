@@ -15,13 +15,49 @@
 </head>
 <body>
     <div class="music-control">
-        <audio id="bgMusic" loop>
-            <source src="./bgm/Pianoboy高至豪 The truth that you leave.flac" type="audio/flac">
+        <div class="music-panel-toggle">
+            <i class="fas fa-headphones-alt"></i>
+        </div>
+        <div class="music-panel">
+            <div class="music-info">
+                <div class="song-cover">
+                    <img src="./img/avatar.jpg" alt="歌曲封面">
+                </div>
+                <div class="song-details">
+                    <div class="song-title">The truth that you leave</div>
+                    <div class="song-artist">Pianoboy高至豪</div>
+                </div>
+            </div>
+            <div class="music-progress">
+                <div class="progress-bar">
+                    <div class="progress-current"></div>
+                </div>
+                <div class="time-info">
+                    <span class="current-time">00:00</span>
+                    <span class="total-time">00:00</span>
+                </div>
+            </div>
+            <div class="music-controls">
+                <button id="prevSong" class="control-btn"><i class="fas fa-step-backward"></i></button>
+                <button id="musicToggle" class="control-btn play-btn"><i class="fas fa-play"></i></button>
+                <button id="nextSong" class="control-btn"><i class="fas fa-step-forward"></i></button>
+                <button id="shuffleBtn" class="control-btn"><i class="fas fa-random"></i></button>
+                <button class="control-btn playlist-btn music-playlist-toggle"><i class="fas fa-list"></i></button>
+            </div>
+        </div>
+        <div class="music-playlist">
+            <div class="playlist-header">
+                <h3>播放列表</h3>
+                <button class="close-playlist"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="playlist-songs">
+                <!-- 歌曲列表将通过JavaScript动态生成 -->
+            </ul>
+        </div>
+        <audio id="bgMusic">
+            <source src="./bgm/The truth that you leave-Pianoboy高至豪 .flac" type="audio/flac">
             您的浏览器不支持音频元素。
         </audio>
-        <button id="musicToggle" class="music-btn">
-            <i class="fas fa-music"></i>
-        </button>
     </div>
     
     <div class="container">
