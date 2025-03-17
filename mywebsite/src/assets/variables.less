@@ -1,0 +1,48 @@
+// 全局Less变量
+
+// 颜色变量
+@primary-color: #6c63ff;
+@secondary-color: #6c63ff;
+@text-color: #222;
+@light-text: #444;
+@lightest-text: #666;
+@bg-color: #f5f7fa;
+@card-bg: rgba(255, 255, 255, 0.9);
+@glass-bg: rgba(255, 255, 255, 0.85);
+
+// 盒子阴影
+@card-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
+@glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+@glass-border: 1px solid rgba(255, 255, 255, 0.18);
+
+// 其他变量
+@transition: all 0.3s ease;
+@border-radius: 12px;
+@text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+// 动画混合
+.fadeIn() {
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+.rotate() {
+  @keyframes rotate {
+    0% {
+      transform: none;
+    }
+    100% {
+      transform: none;
+    }
+  }
+}
+
+// 响应式断点
+@breakpoint-lg: 992px;
+@breakpoint-md: 768px;
+@breakpoint-sm: 576px;
+@breakpoint-xs: 480px; 
