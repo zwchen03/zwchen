@@ -17,4 +17,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    outDir: 'public' // 与CI配置一致
+  },
+  publicDir: 'assets'
 })
