@@ -1,17 +1,17 @@
-# This file is a template, and might need editing before it works on your project.
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/development/cicd/templates/
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Pages/HTML.gitlab-ci.yml
-
-# Full project: https://gitlab.com/pages/plain-html
-image: busybox
-
+image: node:16.5.0
 pages:
   stage: deploy
-  environment: production
+  cache:
+    key:
+      files:
+        - package-lock.json
+      prefix: npm
+    paths:
+      - node_modules/
   script:
-    - echo "The site will be deployed to $CI_PAGES_URL"
+    - npm install
+    - npm run build
+    - cp -a dist/. public/
   artifacts:
     paths:
       - public
