@@ -6,8 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // 设置基础路径为相对路径
-  base: './',
+  base: '/',
   plugins: [
     vue(),
     vueDevTools(),
