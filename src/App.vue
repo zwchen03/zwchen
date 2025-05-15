@@ -136,6 +136,45 @@ img {
   transition: var(--transition);
 }
 
+/* 懒加载图片样式 */
+[v-lazy-image] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  
+  &.loaded {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 懒加载音频样式 */
+[v-lazy-audio] {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+/* 懒加载占位符样式 */
+.lazy-placeholder {
+  background: linear-gradient(90deg, #f0f0f0 0%, #f8f8f8 50%, #f0f0f0 100%);
+  background-size: 200% 100%;
+  animation: placeholderShimmer 1.5s infinite;
+  border-radius: var(--border-radius);
+}
+
+@keyframes placeholderShimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
 /* 为交互元素添加过渡效果 */
 button, 
 input, 

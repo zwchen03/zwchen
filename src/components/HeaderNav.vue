@@ -72,7 +72,7 @@ export default {
             const id = entry.target.getAttribute('id')
             if (id) {
               this.activeSection = id
-              console.log('激活部分:', id) // 调试用
+              // console.log('激活部分:', id) // 调试用
             }
           }
         })
@@ -102,7 +102,7 @@ export default {
           const id = section.getAttribute('id')
           if (id && this.activeSection !== id) {
             this.activeSection = id
-            console.log('滚动激活:', id) // 调试用
+            // console.log('滚动激活:', id) // 调试用
           }
           break
         }
