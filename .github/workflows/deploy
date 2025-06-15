@@ -38,8 +38,6 @@ jobs:
       - name: 构建项目 🔧
         run: npm run build
         env:
-          # 如果您的项目需要环境变量，可以在这里添加
-          # VITE_API_URL: ${{ secrets.VITE_API_URL }}
           NODE_ENV: production
 
       - name: 上传构建产物 📤
@@ -57,4 +55,4 @@ jobs:
     steps:
       - name: 部署到GitHub Pages 🚀
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4 
