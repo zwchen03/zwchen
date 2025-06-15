@@ -39,6 +39,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          VITE_BASE_URL: '/zwchen03/'
 
       - name: 上传构建产物 📤
         uses: actions/upload-pages-artifact@v3
