@@ -33,16 +33,7 @@ export default defineConfig({
         // 代码分割配置
         manualChunks: {
           'vendor': ['vue', 'vue-router', 'pinia'],
-        },
-        // 确保资源路径正确
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') {
-            return 'assets/[name]-[hash][extname]'
-          }
-          return 'assets/[name]-[hash][extname]'
-        },
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js'
+        }
       }
     }
   }
