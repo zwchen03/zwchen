@@ -6,8 +6,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // 根据环境变量设置base路径，用于GitHub Pages部署
-  base: process.env.NODE_ENV === 'production' ? '/zwchen03.github.io/' : '/',
+  // 使用根路径，因为仓库名是username.github.io格式
+  base: '/',
   plugins: [
     vue(),
     vueDevTools(),
